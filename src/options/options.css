@@ -1,0 +1,194 @@
+
+ #preferences-submit {
+  background: #7ed7f4 ; 
+  border: none;
+  border-radius: 12px;
+  color: black;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 40px;
+  text-decoration: none;
+  width: 180px; 
+  height: 40px; 
+  margin-left: 20px;
+}
+#cancel-button{
+  background: rgb(176, 175, 175) ; 
+  border: none;
+  border-radius: 12px;
+  color: black;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 40px;
+  text-decoration: none;
+  width: 100px; 
+  height: 40px; 
+}
+
+#input-url{
+  height: 30px;
+  width: 500px;
+  font-size:12pt;
+  margin-left: 16px;
+  color: black;
+}
+
+#wrapper-div{
+  position:relative;
+  top:0px; 
+  overflow:auto;
+}
+
+#developer-mode{
+  display: flex;
+}
+
+#developer-mode-text{
+  color: black;
+  font-size: x-large;
+  font-weight: 400;
+}
+
+#div-togglebutton{
+  margin-top: 17px;
+  left: 10px;
+}
+.toggle-container {
+  position:relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+  pointer-events: none;
+}
+
+.toggle-container input {
+opacity: 0;
+width: 100%;
+height: 100%;
+pointer-events: all;
+}
+
+.slider {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+cursor: pointer;
+background-color: rgb(178, 172, 172) ;
+transition: 0.4s;
+pointer-events: none;
+border: #100f0f ;
+}
+
+.slider::before {
+content: "";
+position: absolute;
+height: 20px;
+width: 20px;
+left: 2px;
+bottom: 2px;
+background-color: #808080;
+transition: 0.2s;
+pointer-events: none;
+}
+
+.slider::after {
+position: absolute;
+height: 20px;
+width: 12px;
+right: 5px;
+bottom: 5px;
+transition: 0.2s;
+pointer-events: none;
+color: #808080;
+}
+
+input:checked + .slider {
+background-color:#7ed7f4;
+}
+
+input:checked + .slider:before {
+transform: translateX(25px);
+}
+
+input:checked + .slider:after {
+left: 8px;
+}
+
+.slider.round {
+border-radius: 34px;
+}
+
+.slider.round:before {
+border-radius: 50%;
+}
+
+#advanced-options{
+color: black;
+font-size: x-large;
+font-weight: 400;
+}
+
+#renderings-header{
+color: black;
+font-size: x-large;
+font-weight: 400;
+}
+#noHaptics{
+color: black;
+font-size: medium;
+font-weight: 400; 
+}
+
+#Haply2diy{
+color: black;
+font-size: medium;
+font-weight: 400; 
+}
+#audioRenderingsLabel{
+color: black;
+font-size: medium;
+font-weight: 400;
+}
+
+#textRenderingsLabel{
+color: black;
+font-size: medium;
+font-weight: 400;
+line-height: 30pt;
+}
+
+#server-options{
+color: black;
+font-size: medium;
+font-weight: 400;
+}
+
+#mcgillServerLabel{
+color: black;
+font-size: medium;
+font-weight: 400; 
+line-height: 30pt;
+}
+
+#customServerLabel{
+color: black;
+font-size: medium;
+font-weight: 400; 
+line-height: 20pt;
+}
+
+#debugText{
+color: black;
+font-size: medium;
+font-weight: 400; 
+}
+
+#debug-text-div{
+  text-align: start;
+  margin-top: 20px;
+}
+

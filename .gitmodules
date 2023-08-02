@@ -1,0 +1,4 @@
+[submodule "schemas"]
+	path = schemas
+	url = git@github.com:Shared-Reality-Lab/IMAGE-server.git
+	branch = schemas
