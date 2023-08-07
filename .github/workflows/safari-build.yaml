@@ -46,7 +46,7 @@ jobs:
         
       - name: Build and Archive Xcode Project for iOS
         run: |
-          xcodebuild clean archive -project "IMAGE Extension (Test)/IMAGE Extension (Test).xcodeproj" -scheme "IMAGE Extension (Test) (iOS)" -configuration Release -archivePath "build/IMAGE.xcarchive"
+          xcodebuild clean archive -project "IMAGE Extension (Test)/IMAGE Extension (Test).xcodeproj" -scheme "IMAGE Extension (Test) (iOS)" -configuration Release -archivePath "build/IMAGE.xcarchive" DEVELOPMENT_TEAM=${{ secrets.DEVELOPMENT_TEAM }}
 
           
       - name: Archive Artifacts
