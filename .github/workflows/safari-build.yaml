@@ -33,8 +33,8 @@ jobs:
         run: |
           # Use the extracted filename to update the "scripts" field
           background_filename=$(cat extracted_background_script.txt)
-          jq '.background = { scripts: [ $background_filename ], "type": "module" }' ./build-chrome/manifest.json > ./build-chrome/manifest.json.tmp
-          mv ./build-chrome/manifest.json.tmp ./build-chrome/manifest.json
+          jq --arg bf "$background_filename" '.background = { scripts: [ $bf ], "type": "module" }' ./build-chrome/manifest.json > ./build-chrome/manifest.json.tmp
+          mv ./build-chrome/manifest.json.tmp ./build-chrome/manifest.json        
 
       - name: Convert to Safari extension
         run: xcrun safari-web-extension-converter ./build-chrome
