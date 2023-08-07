@@ -25,6 +25,9 @@ jobs:
         with:
           node-version: '14'
 
+      - name: Update browserslist-db
+        run: npx update-browserslist-db@latest
+
       - name: Install dependencies
         run: npm install
 
@@ -32,12 +35,12 @@ jobs:
         id: extract_background_filename
         run: |
           background_script=$(jq -r '.background.service_worker' ./build-chrome/manifest.json)
-          echo "::set-output name=filename::$background_script"
+          echo "$background_script" >> $GITHUB_STATE/background_script
 
       - name: Modify manifest.json
         run: |
           # Use the extracted filename to update the "scripts" field
-          background_filename=$(cat ${{ steps.extract_background_filename.outputs.filename }})
+          background_filename=$(cat $GITHUB_STATE/background_script)
           jq '.background = { scripts: [ $background_filename ], "type": "module" }' ./build-chrome/manifest.json > ./build-chrome/manifest.json.tmp
           mv ./build-chrome/manifest.json.tmp ./build-chrome/manifest.json
 
