@@ -12,14 +12,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Download and extract extension.zip
-        run: |
-          # Download extension.zip
-          curl -LJO "https://nightly.link/Shared-Reality-Lab/IMAGE-browser/workflows/typescript-check/main/extension.zip"
-
-          # Unzip the downloaded file
-          unzip extension.zip -d build-chrome
-
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
@@ -27,6 +19,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Build Chrome extension
+        run: npm run pack:test
 
       - name: Extract background script filename
         id: extract_background_filename
