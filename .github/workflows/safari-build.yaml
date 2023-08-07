@@ -38,3 +38,6 @@ jobs:
 
       - name: Convert to Safari extension
         run: xcrun safari-web-extension-converter ./build-chrome
+
+      - name: Display modified manifest.json
+        run: cat ./build-chrome/manifest.json
