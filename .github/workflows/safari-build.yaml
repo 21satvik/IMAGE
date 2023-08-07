@@ -27,7 +27,7 @@ jobs:
         id: extract_background_filename
         run: |
           background_script=$(jq -r '.background.service_worker' ./build-chrome/manifest.json)
-          echo "$background_script" >> $GITHUB_STATE/background_script
+          echo "$background_script" > $GITHUB_STATE/background_script.txt
 
       - name: Modify manifest.json
         run: |
