@@ -44,13 +44,5 @@ jobs:
         with:
           xcode-version: latest
         
-      - name: Build and Archive Xcode Project for iOS
-        run: |
-          xcodebuild clean archive -project "IMAGE Extension (Test)/IMAGE Extension (Test).xcodeproj" -scheme "IMAGE Extension (Test) (iOS)" -configuration Release -archivePath "build/IMAGE.xcarchive" DEVELOPMENT_TEAM=${{ secrets.DEVELOPMENT_TEAM }} -allowProvisioningUpdates
-
-          
-      - name: Archive Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: YourApp Archive
-          path: build/IMAGE.xcarchive
+      - name: Build .app file
+        run: xcodebuild build -project "IMAGE Extension (Test)/IMAGE Extension (Test).xcodeproj" -scheme "IMAGE Extension (Test) (iOS)" -configuration Release -derivedDataPath build/ -allowProvisioningUpdates
