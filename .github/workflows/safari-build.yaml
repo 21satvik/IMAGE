@@ -45,4 +45,4 @@ jobs:
           xcode-version: latest
         
       - name: Build .app file
-        run: xcodebuild build -project "IMAGE Extension (Test)/IMAGE Extension (Test).xcodeproj" -scheme "IMAGE Extension (Test) (iOS)" -configuration Release -derivedDataPath build/ -allowProvisioningUpdates
+        run: xcodebuild -target "IMAGE Extension (Test)" -sdk "iphoneos" -configuration Release
