@@ -43,8 +43,16 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: latest
+
+      - name: Import Certificate
+        run: |
+          echo "$DEVELOPMENT_CERT_BASE64" | base64 -D -o certificate.cer
+          security import certificate.cer -k ~/Library/Keychains/login.keychain-db -T /usr/bin/codesign
+        env:
+          DEVELOPMENT_CERT_BASE64: ${{ secrets.DEVELOPMENT_CERT_BASE64 }}
+        
         
       - name: Build .app file
-        run: xcodebuild -target "IMAGE Extension (Test) (iOS)" -sdk "iphoneos" -configuration Release CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
+        run: xcodebuild -target "IMAGE Extension (Test) (iOS)" -sdk "iphoneos" -configuration Release
         working-directory: IMAGE Extension (Test)
       
