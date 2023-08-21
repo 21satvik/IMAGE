@@ -45,6 +45,6 @@ jobs:
           xcode-version: latest
         
       - name: Build .app file
-        run: xcodebuild -target "IMAGE Extension (Test) (iOS)" -sdk "iphoneos" -configuration Release
+        run: xcodebuild -target "IMAGE Extension (Test) (iOS)" -sdk "iphoneos" -configuration Release CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
         working-directory: IMAGE Extension (Test)
       
