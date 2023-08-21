@@ -43,17 +43,8 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: latest
-
-      - name: List files in project directory
-        run: ls -la IMAGE\ Extension\ \(Test\)
-
-      - name: List contents of .xcodeproj directory
-        run: ls -la IMAGE\ Extension\ \(Test\)/IMAGE\ Extension\ \(Test\).xcodeproj
-
-      - name: List available targets in Xcode project
-        run: xcodebuild -list -project "IMAGE Extension (Test)/IMAGE Extension (Test).xcodeproj"
         
       - name: Build .app file
-        run: xcodebuild -target "IMAGE Extension (Test)" -sdk "iphoneos" -configuration Release
+        run: xcodebuild -target "IMAGE Extension (Test) (iOS)" -sdk "iphoneos" -configuration Release
         working-directory: IMAGE Extension (Test)
       
