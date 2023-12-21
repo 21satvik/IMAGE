@@ -30,4 +30,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: xcode-project
-          path: "/IMAGE Extension (Test)/IMAGE Extension (Test).xcodeproj"
+          path: xcode-project-directory/IMAGE\ Extension\ \(Test\).xcodeproj
+      
