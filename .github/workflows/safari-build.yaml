@@ -28,4 +28,4 @@ jobs:
       
       - name: debug
         run: ls -la
-            ls /Users/runner/work/IMAGE/IMAGE
+            ls IMAGE Extension (Test)
