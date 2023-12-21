@@ -26,5 +26,8 @@ jobs:
       - name: Convert to Safari extension
         run: xcrun safari-web-extension-converter ./build-chrome
       
-      - name: debug
-        run: ls "IMAGE Extension (Test)"
+      - name: Upload Xcode project
+        uses: actions/upload-artifact@v2
+        with:
+          name: xcode-project
+          path: "/IMAGE Extension (Test)/IMAGE Extension (Test).xcodeproj"
