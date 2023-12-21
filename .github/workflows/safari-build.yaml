@@ -27,7 +27,7 @@ jobs:
         run: xcrun safari-web-extension-converter ./build-chrome
 
       - name: Debug
-        run: ls -l
+        run: ls -l "IMAGE Extension (Test)"
       
       - name: Upload Xcode project
         uses: actions/upload-artifact@v2
