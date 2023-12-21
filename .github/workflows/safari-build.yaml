@@ -25,9 +25,7 @@ jobs:
         
       - name: Convert to Safari extension
         run: xcrun safari-web-extension-converter ./build-chrome
-        
-      - name: Set up Xcode
-        uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: latest
       
+      - name: debug
+        run: ls -la
+            ls /Users/runner/work/IMAGE/IMAGE
