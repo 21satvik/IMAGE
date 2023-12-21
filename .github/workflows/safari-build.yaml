@@ -27,5 +27,4 @@ jobs:
         run: xcrun safari-web-extension-converter ./build-chrome
       
       - name: debug
-        run: ls -la
-            ls IMAGE Extension (Test)
+        run: ls "IMAGE Extension (Test)"
