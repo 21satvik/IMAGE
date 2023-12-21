@@ -23,19 +23,6 @@ jobs:
       - name: Build Chrome extension
         run: npm run pack:test
         
-      - name: Extract background script filename
-        id: extract_background_filename
-        run: |
-          background_script=$(jq -r '.background.service_worker' ./build-chrome/manifest.json)
-          echo "$background_script" > extracted_background_script.txt
-        
-      - name: Modify manifest.json
-        run: |
-          # Use the extracted filename to update the "scripts" field
-          background_filename=$(cat extracted_background_script.txt)
-          jq --arg bf "$background_filename" '.background = { scripts: [ $bf ], "type": "module" }' ./build-chrome/manifest.json > ./build-chrome/manifest.json.tmp
-          mv ./build-chrome/manifest.json.tmp ./build-chrome/manifest.json
-        
       - name: Convert to Safari extension
         run: xcrun safari-web-extension-converter ./build-chrome
         
@@ -43,24 +30,4 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: latest
-
-      - name: Set Development Team
-        run: |
-          sed -i '' "s/DEVELOPMENT_TEAM = .*;/DEVELOPMENT_TEAM = \"$DEVELOPMENT_TEAM\";/" "IMAGE Extension (Test).xcodeproj/project.pbxproj"
-        env:
-          DEVELOPMENT_TEAM: ${{ secrets.DEVELOPMENT_TEAM }}
-        working-directory: IMAGE Extension (Test)
-        
-
-      - name: Import Certificate
-        run: |
-          echo "$DEVELOPMENT_CERT_BASE64" | base64 -D -o certificate.cer
-          security import certificate.cer -k ~/Library/Keychains/login.keychain-db -T /usr/bin/codesign
-        env:
-          DEVELOPMENT_CERT_BASE64: ${{ secrets.DEVELOPMENT_CERT_BASE64 }}
-        
-        
-      - name: Build .app file
-        run: xcodebuild -target "IMAGE Extension (Test) (iOS)" -sdk "iphoneos" -configuration Release
-        working-directory: IMAGE Extension (Test)
       
